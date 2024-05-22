@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Modal, Button, Typography, Row, Col, Select, Input } from "antd";
 const { TextArea } = Input;
 import { MailOutlined } from "@ant-design/icons";
-import "./DetailPopup.css";
+import "./SendEmailButton.css";
 
 const SendEmailButton = ({ showModal }) => {
     return (
@@ -106,7 +106,7 @@ const MyComponent = () => {
     };
 
     const [loadings, setLoadings] = useState([]);
-    
+
     const enterLoading = (index) => {
         setLoadings((prevLoadings) => {
             const newLoadings = [...prevLoadings];

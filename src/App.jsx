@@ -8,7 +8,7 @@ import EnterNewPass from "./pages/EnterNewPass/EnterNewPass";
 import SignUp from "./components/SignUpForm/SignUpForm";
 import First_Page from "./pages/FirstPage/FirstPage";
 import LoginForm from "./pages/LoginForm/LoginForm";
-import DetailPopup from "./pages/ViewDetailPopup/DetailPopup";
+import SendEmailButton from "./pages/SendEmailButton/SendEmailButton";
 import SignUpForm from "./pages/SignUpForm/SignUpForm";
 
 function App() {
@@ -24,7 +24,7 @@ function App() {
                 <Route path="/EnterNewPass" element={<EnterNewPass />} />
                 <Route path="/register" element={<SignUp />} />
                 <Route path="/login" element={<LoginForm />} />
-                <Route path="/detailpopup" element={<DetailPopup />} />
+                <Route path="/sendemailbutton" element={<SendEmailButton />} />
                 <Route path="/signup" element={<SignUpForm />} />
             </Routes>
         </>
