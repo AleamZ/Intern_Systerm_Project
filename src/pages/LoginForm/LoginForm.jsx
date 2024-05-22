@@ -1,5 +1,15 @@
 import React, { useState } from "react";
-import { Button, Checkbox, Form, Input, Tabs, Typography, Image, Row, Col,} from "antd";
+import {
+    Button,
+    Checkbox,
+    Form,
+    Input,
+    Tabs,
+    Typography,
+    Image,
+    Row,
+    Col,
+} from "antd";
 import "antd/dist/reset.css"; // Reset Ant Design styles
 import img7 from "../../assets/image-7.svg";
 import "./LoginForm.css";
@@ -8,9 +18,10 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
 // Position Tab
-const PositionTab = () => (
+const PositionTab = ({ activeTab, setActiveTab }) => (
     <Tabs
-        defaultActiveKey="1"
+        activeKey={activeTab}
+        onChange={(key) => setActiveTab(key)}
         items={[
             {
                 label: "Admin",
@@ -38,12 +49,22 @@ const PositionTab = () => (
     />
 );
 // Login Form
-const LoginForm = () => {
+const LoginForm = ({ activeTab }) => {
     const { t } = useTranslation();
     const nav = useNavigate();
+
+    const tabTitles = {
+        1: "Admin",
+        2: "Human Resources",
+        3: "Mentor",
+        4: "School",
+        5: "Intern",
+    };
     return (
         <Form layout="vertical" className="main-form">
-            <Typography.Title className="title">Admin Login</Typography.Title>
+            <Typography.Title className="title">
+                {tabTitles[activeTab]} Login
+            </Typography.Title>
             <Typography.Paragraph className="desc">
                 {t("Please fill your detail to create your account.")}
             </Typography.Paragraph>
@@ -147,6 +168,7 @@ const MySvgIcon = () => (
 
 // Main Page Login
 function MyComponent() {
+    const [activeTab, setActiveTab] = useState("1");
     return (
         <>
             <div className="container">
@@ -154,9 +176,12 @@ function MyComponent() {
                 <main className="main-content">
                     <Row>
                         <Col span={8}>
-                            <PositionTab />
+                            <PositionTab
+                                activeTab={activeTab}
+                                setActiveTab={setActiveTab}
+                            />
                             <Row>
-                                <LoginForm />
+                                <LoginForm activeTab={activeTab} />
                             </Row>
                         </Col>
                         <Col span={16}>
