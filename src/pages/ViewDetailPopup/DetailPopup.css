@@ -1,0 +1,22 @@
+.desc {
+    font: 16px;
+    font-weight: 600;
+}
+
+.select-type-email {
+    width: 100%;
+}
+
+.textarea {
+    min-width: 200px;
+}
+
+.send-email-btn {
+    margin: 16px 50px 10px 0;
+    background-color: #6537b1;
+    color: #ffff;
+    width: 140px;
+    height: 45px;
+    border-radius: 15px;
+    font-size: 14px;
+}
