@@ -10,6 +10,7 @@ import First_Page from "./pages/FirstPage/FirstPage";
 import LoginForm from "./pages/LoginForm/LoginForm";
 import SendEmailButton from "./pages/SendEmailButton/SendEmailButton";
 import SignUpForm from "./pages/SignUpForm/SignUpForm";
+import GroupOnPage from "./pages/GroupOnPage/GroupOnPage"
 
 function App() {
     const [count, setCount] = useState(0);
@@ -26,6 +27,7 @@ function App() {
                 <Route path="/login" element={<LoginForm />} />
                 <Route path="/sendemailbutton" element={<SendEmailButton />} />
                 <Route path="/signup" element={<SignUpForm />} />
+                <Route path="/group" element={<GroupOnPage />} />
             </Routes>
         </>
     );
