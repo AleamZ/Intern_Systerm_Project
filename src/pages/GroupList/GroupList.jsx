@@ -592,22 +592,32 @@ const GroupList = () => {
     inputFields.reduce((acc, field) => ({ ...acc, [field.title]: "" }), {})
   );
 
+  const [formErrors, setFormErrors] = useState(
+    inputFields.reduce((acc, field) => ({ ...acc, [field.title]: "" }), {})
+  );
+
   const handleInputChange = (e, title) => {
     setFormValues({ ...formValues, [title]: e.target.value });
+    setFormErrors({ ...formErrors, [title]: "" });
   };
 
   const handleSubmit = () => {
-    const allFieldsFilled = Object.values(formValues).every(
-      (value) => value.trim() !== ""
-    );
-    if (allFieldsFilled) {
+    const newErrors = inputFields.reduce((acc, field) => {
+      if (!formValues[field.title].trim()) {
+        acc[field.title] = `${field.title} is required`;
+      }
+      return acc;
+    }, {});
+
+    if (Object.keys(newErrors).length > 0) {
+      setFormErrors(newErrors);
+      message.error("Please fill in all fields");
+    } else {
       setFormValues(
         inputFields.reduce((acc, field) => ({ ...acc, [field.title]: "" }), {})
       );
       message.success("Intern added successfully");
       handleCancel();
-    } else {
-      message.error("Please fill all fields");
     }
   };
 
@@ -834,6 +844,9 @@ const GroupList = () => {
                     borderRadius: "10px",
                   }}
                 />
+                {formErrors[field.title] && (
+                  <span style={{ color: "red" }}>{formErrors[field.title]}</span>
+                )}
               </Space>
             ))}
           </Space>
